@@ -48,11 +48,11 @@ Students should:
 # Literature and Material
 
 ### Slides
- - tbd
 
-<!-- 
 1. [Introduction to the course](slides/1-intro.pdf)
--->
+2. [Transition systems and CCS](slides/2-behaviour.pdf)
+3. [mCRL2 tool](slides/3-mcrl2.pdf)
+4. ...
 
 ### Main book
 
