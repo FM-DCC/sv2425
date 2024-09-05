@@ -37,7 +37,7 @@ Students should:
 
 # Lectures
 
-- __? Sep 23__: Introduction ([1-intro.pdf](slides/1-intro.pdf)).
+- __19 Sep '23__: Introduction ([1-intro.pdf](slides/1-intro.pdf)).
 - ...
 
 <!--
@@ -56,7 +56,7 @@ Students should:
 
 ### Main book
 
-- [Principles of model checking.](http://catalogo.up.pt/F/-?func=find-b&local_base=FCUP&find_code=SYS&request=000288620), Christel Baier and Joost-Pieter Katoen_; ISBN: 978-0-262-02649-9
+- [Principles of model checking.](http://catalogo.up.pt/F/-?func=find-b&local_base=FCUP&find_code=SYS&request=000288620), _Christel Baier and Joost-Pieter Katoen_; ISBN: 978-0-262-02649-9
 
 
 <!-- 
