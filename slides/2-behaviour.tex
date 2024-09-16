@@ -182,17 +182,24 @@
   \prog{map}\ f \tikzmark{x2}$
 
   \vspace{1cm}
-  The powerset functor - almost like the list functor; the difference
+  The \alert{powerset functor} - almost like the list functor; the difference
   is that we do not look at the order in which elements appear and
   how many times they repeat. Formally,
   \[
-    \texttt{P}(X) \mapsto \{ A \mid A \subseteq X \}, \qquad
-    \texttt{P}(f) \mapsto (A \mapsto \{ f(a) \mid a \in A \})
+    \texttt{P}(X) \mapsto \only<1>{\alert{~~?}}\visible<2->{\structure{\{ A \mid A \subseteq X \}}}, \qquad
+    \texttt{P}(f) \mapsto \only<1-2>{\alert{~~?}}\visible<3->{\structure{(A \mapsto \{ f(a) \mid a \in A \})}}
   \]
-
+  \visible<4->{
+  \only<4>{\exerciseBack\exerciseBack\exerciseBack}%
+  \only<5>{\exerciseBack}%
   \begin{exampleblock}{\exercise Powerset on Booleans}
-    $\texttt{P}(\mathtt{Bool}) \mapsto \{ \emptyset, \{ \top \}, \{ \bot \}, \{ \top, \bot \} \}$
+    $\texttt{P}(\mathtt{Bool}) \mapsto
+      \visible<5->{\structure{\{ \emptyset, \{ \top \}, \{ \bot \}, \{ \top, \bot \} \}}}$
+      \\
+    $\texttt{P}(\mathtt{not}) \mapsto
+      \visible<5->{\structure{A \mapsto \{not(a) ~|~ a \in A\}}}$
   \end{exampleblock}
+  }
   
   \begin{tikzpicture}[overlay,remember picture,
        box/.style = {rounded corners},
@@ -246,6 +253,10 @@
 
 \begin{slide}{Exercise}
   \centering
+
+  \begin{block}{Recall functors}
+    $X \mapsto A\times X \qquad X \mapsto \Pow(X) \qquad X \mapsto X^A \qquad X \mapsto \Dist(X)$
+  \end{block}
   \doExercise{Formalise as an F-transition system}{
     \centering 
     \wrap{\begin{tikzpicture}[aut]
