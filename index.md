@@ -9,7 +9,7 @@ layout: home
 This course provides an introduction to formal techniques to verify computer systems based on models (model checking).
 
 
-The official plan of this course is hosted in FCUP [here](https://sigarra.up.pt/fcup/pt/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=?????).
+The official plan of this course is hosted in FCUP [here](https://sigarra.up.pt/fcup/pt/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=548134).
 
 # Learning outcomes and competences
 
@@ -52,7 +52,8 @@ Students should:
 1. [Introduction to the course](slides/1-intro.pdf)
 2. [Transition systems and CCS](slides/2-behaviour.pdf)
 3. [mCRL2 tool](slides/3-mcrl2.pdf)
-4. ...
+4. [Modal logic](slides/4-modal-logic.pdf)
+5. ...
 
 ### Main book
 
