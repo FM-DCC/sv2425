@@ -94,9 +94,9 @@
   \end{alertblock}
   \end{minipage}
 ~~
-  \begin{minipage}{0.28\textwidth}~\\[-1mm]
-  \begin{exampleblock}{Implementation}
-    Generate correct code.\\~\\
+  \begin{minipage}{0.28\textwidth}
+  \begin{exampleblock}{Implementation}~\\[-1mm]
+    Generate correct code.\\~\\~
   \end{exampleblock}
   \end{minipage}
 
@@ -251,11 +251,11 @@
   \splittwo{0.49}{0.49}{
     \includegraphicsframed[width=\textwidth]{images/coffeemachine.jpg}
   }{\centering
-    \mycbox{\Large $\alert{\mathcal{M}},\structure{w} \models \phi$}
+    \mycbox{\Large $\alert{\mathcal{M}},\structure{s} \models \phi$}
        does the \alert{model}
     \\ $\alert{\mathcal{M}}$
     \\ in \structure{state}
-    \\ $\structure{w}$
+    \\ $\structure{s}$
     \\ satisfies the \textbf{requirement}
     \\ $\phi$
   }
@@ -286,7 +286,7 @@
     \end{block}
 
     \begin{block}{$\mathcal{M}, S1 \models \mi{[make~selection]~selection}$}
-    means selection holds in every state reachable with make selection from \emph{S1}
+    means selection holds in every state reachable with \emph{``make selection''} from \emph{S1}
     \end{block}
   }
 \end{frame}

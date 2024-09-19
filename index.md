@@ -37,7 +37,7 @@ Students should:
 
 # Lectures
 
-- __19 Sep '23__: Introduction ([1-intro.pdf](slides/1-intro.pdf)).
+- __19 Sep '23__: Overview of the module and introduction to model checking (Slides [1-intro.pdf](slides/1-intro.pdf)). Starting to describe transistion systems with functors (slides [2-behaviour](slides/2-behaviour.pdf), frames 1-6).
 - ...
 
 <!--
