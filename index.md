@@ -38,7 +38,9 @@ Students should:
 # Lectures
 
 - __19 Sep '23__: Overview of the module and introduction to model checking (Slides [1-intro.pdf](slides/1-intro.pdf)). Starting to describe transistion systems with functors (slides [2-behaviour](slides/2-behaviour.pdf), frames 1-6).
-- ...
+
+- __24 Sep '23__: Transistion systems with functors; sequential process algebra (slides [2-behaviour](slides/2-behaviour.pdf), frames 6-...).
+
 
 <!--
 - __29 Sep 23__: XYZ ([2-xyz.pdf - pages 13-36](slides/2-xyz.pdf)).
