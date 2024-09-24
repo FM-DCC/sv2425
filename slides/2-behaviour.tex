@@ -389,6 +389,11 @@ where
 %-------------------------------------------------------------------------------
 
 \exerciseBack
+
+
+\newcommand{\goOn}[1]{\href{http://lmf.di.uminho.pt/ccs-caos/?#1}{#1}\xspace}
+\newcommand{\goOnline}[2]{\href{http://lmf.di.uminho.pt/ccs-caos/?#2}{#1}\xspace}
+
 \begin{slide}{CCS semantics - building a transition system}
 \small 
 Every $P$ yields a transition system $X \to {\alert{???}}$ with transitions prescribed by the rules below.
@@ -419,7 +424,7 @@ Every $P$ yields a transition system $X \to {\alert{???}}$ with transitions pres
   \begin{itemize}
     \item \structure{Initial states:} the process being translated
     \item \structure{Final states:} all states are final
-    \item \alert{Language:} possible sequence of actions of a process
+    \item \alert{Language:} possible sequences of actions of a process
   \end{itemize}
 }
 \pause
@@ -427,8 +432,8 @@ Every $P$ yields a transition system $X \to {\alert{???}}$ with transitions pres
 \begin{exampleblock}{\exercise Build a derivation tree to prove the transitions below}
   \vspace*{-2mm}
   \begin{enumerate}
-    \item $(a.A + b.B) ~\trans{b}~ B$
-    \item $(a.b.A + (b.a.B + c.a.C)) ~\trans{b}~ a.B$
+    \item $\goOn{(a.A + b.B)} ~\trans{b}~ B$
+    \item $\goOn{(a.b.A + (b.a.B + c.a.C))} ~\trans{b}~ a.B$
     \item $((a.B + b.A)[a \mapsto c])\backslash\{a,b\} ~\trans{c}~ (B[a\mapsto c])\backslash\{a,b\}$
   \end{enumerate}
 \end{exampleblock}
