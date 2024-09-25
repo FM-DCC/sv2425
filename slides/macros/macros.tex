@@ -381,6 +381,35 @@
 \tikzstyle{final}=[accepting]
 \tikzstyle{lbl}=[font=\footnotesize,inner sep=3pt]
 
+% For modal logic and timed automata slides
+\def\uppaal{\textsc{Uppaal}}
+\def\cc#1{\mathcal{C}(#1)}
+% % \newcommand{\pv}[2]{\langle #1 \rangle\, #2}
+% \newcommand{\nc}[2]{[#1]\, #2}
+\newcommand{\impp}{\mathbin{\rightarrow}}
+\newcommand{\dimpp}{\mathbin{\leftrightarrow}}
+\newcommand{\always}{\boxempty}
+\newcommand{\nexts}{\bigcirc}
+\newcommand{\until}{\mathbin{\mathcal U}}
+\newcommand{\eventual}{\Diamond}
+\newcommand{\true}{\mathsf{true}}
+\newcommand{\false}{\mathsf{false}}
+\newcommand{\fdec}[3]{#1: #2 \longrightarrow  #3}
+\newcommand{\pow}[1]{{\cal P}#1}
+\newcommand{\tran}[1]{\stackrel{#1}{\longrightarrow}}
+\newcommand{\PP}{\alert{P}}
+\newcommand{\universal}[2]{\forall_{#1}\; .\; #2}
+\newcommand{\existential}[2]{\exists_{#1}\; .\; #2}
+\newcommand{\enset}[1]{\mathopen{ \{ }#1\mathclose{ \} }} % {a,b,...z}
+\newcommand{\diam}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\boxx}[1]{\ensuremath{[#1]}}
+\newcommand{\evm}[1]{\langle #1 \rangle\,}
+\newcommand{\alm}[1]{[#1]\,}
+\newcommand{\evmb}[1]{\evm{\alert{#1}}}
+\newcommand{\almb}[1]{\alm{\alert{#1}}}
+\def\R{\mathcal{R}}
+\def\TL#1{\mathcal{T}(#1)}
+
 %%% Uppaal-like diagrams
 \newcommand{\uppbox}[3][20mm]{\tikz{
   \node[black!15,fill=black!15,minimum width=#1,align=left](title){\textbf{{\footnotesize #2}}};
