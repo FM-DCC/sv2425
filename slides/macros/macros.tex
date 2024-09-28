@@ -1,3 +1,25 @@
+\usepackage{etex} % fixes new-dimension error
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+%----------------------------------------------------------------------------
+\usepackage{graphicx,amsmath}
+\usepackage{stmaryrd} % cf. interleave
+\usepackage{booktabs}
+\usepackage{amscd}
+\usepackage{multicol}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{alltt}
+\usepackage{proof}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[new]{old-arrows}
+\usepackage[all]{xy}
+\usepackage{pgfplots}
+\usepackage{textcomp}
+
+
 \usepackage{transparent}
 \usepackage{xspace}
 \usepackage{listings}
@@ -115,9 +137,9 @@
 \newcommand{\blank}{\, - \,}
 \newcommand{\sem}[1]{\llbracket #1 \rrbracket}
 \newcommand{\closure}[1]{\overline{#1}}
-\DeclareMathOperator{\img}{\mathrm{im}}
-\DeclareMathOperator{\dom}{\mathrm{dom}}
-\DeclareMathOperator{\codom}{\mathrm{codom}}
+% \DeclareMathOperator{\img}{\mathrm{im}}
+% \DeclareMathOperator{\dom}{\mathrm{dom}}
+% \DeclareMathOperator{\codom}{\mathrm{codom}}
 %% Sets of numbers
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -508,51 +530,53 @@
 
 
 % Listing - RAMDE
-% \lstset{%language=Java
-% %  ,basicstyle=\footnotesize
-%   ,columns=fullflexible %space-fexible
-%   ,keepspaces
-% %  ,numberstyle=\tiny
-%   ,mathescape=true
-%   ,showstringspaces=false
-% %  ,morekeywords={refract,global,local,on-change}
-%   ,morecomment=[l]{\%}
-%   ,commentstyle=\sl\sffamily\color{gray}\scriptsize
-%   ,basicstyle=\ttfamily\relsize{-0.5}
-%   ,keywordstyle=\bf\color{red!50!blue}                % morekeywords={...} - not used
-% %  ,emphstyle=\it\sffamily\color{blue!80!black}
-%   ,emphstyle=\bfseries\itshape\color{blue!80!black}       % moreemph={...} - layer keywords
-%   ,emphstyle={[2]\itshape\color{red!70!black}}%\underbar} % moreemph={[2]...} - inner keywords
-%   ,stringstyle=\color{darkgreen}
-%   ,alsoletter={-,||,+,<>,&&,=>,|}
-%   ,literate=*{->}{{{\color{red!70!black}$\to$}}}{1}
-%              {.}{{{\color{red!70!black}.}}}{1}
-%              {+}{{{\color{red!70!black}+}}}{1}
-%              {*}{{{\color{red!70!black}*}}}{1}
-%              {\#}{{{\color{red!70!black}\#}}}{1}
-%              {&}{{{\color{red!70!black}\&}}}{1}
-%              {!}{{{\color{red!70!black}!}}}{1}
-%              {:=}{{{\color{red!70!black}:=}}}{1}
-%              {||}{{{\color{red!70!black}$\rule{1mm}{0mm}\|\rule{1mm}{0mm}$}}}{1}
-%   ,emph={act,proc,init,sort,map,var,eqn}
-%   ,emph={[2]block,hide,comm,rename,allow,||,<>,sum,&&,=>}
-% %  ,emphstyle={[2]\color{blue}}2
-%   ,framerule=1pt
-%   ,backgroundcolor=\transparent{0.02}\color{black}
-%   ,rulecolor=\color{black!30}
-%   ,frame=tblr
-%   ,xleftmargin=4pt
-%   ,xrightmargin=4pt
-%   ,captionpos=b
-% %  ,belowcaptionskip=\medskipamount
-%   ,aboveskip=\baselineskip
-%   ,floatplacement=htb
-% }
+\lstdefinestyle{mcrl2}{%language=Java
+%  ,basicstyle=\footnotesize
+  ,columns=fullflexible %space-fexible
+  ,keepspaces
+%  ,numberstyle=\tiny
+  ,mathescape=true
+  ,showstringspaces=false
+%  ,morekeywords={refract,global,local,on-change}
+  ,morecomment=[l]{\%}
+  ,commentstyle=\sl\sffamily\color{gray}\scriptsize
+  ,basicstyle=\ttfamily\relsize{-0.5}
+  ,keywordstyle=\bf\color{red!50!blue}                % morekeywords={...} - not used
+%  ,emphstyle=\it\sffamily\color{blue!80!black}
+  ,emphstyle=\bfseries\itshape\color{blue!80!black}       % moreemph={...} - layer keywords
+  ,emphstyle={[2]\itshape\color{red!70!black}}%\underbar} % moreemph={[2]...} - inner keywords
+  ,stringstyle=\color{darkgreen}
+  ,alsoletter={-,||,+,<>,&&,=>,|}
+  ,literate=*{->}{{{\color{red!70!black}$\to$}}}{1}
+             {.}{{{\color{red!70!black}.}}}{1}
+             {+}{{{\color{red!70!black}+}}}{1}
+             {*}{{{\color{red!70!black}*}}}{1}
+             {\#}{{{\color{red!70!black}\#}}}{1}
+             {&}{{{\color{red!70!black}\&}}}{1}
+             {!}{{{\color{red!70!black}!}}}{1}
+             {:=}{{{\color{red!70!black}:=}}}{1}
+             {||}{{{\color{red!70!black}$\rule{1mm}{0mm}\|\rule{1mm}{0mm}$}}}{1}
+  ,emph={act,proc,init,sort,map,var,eqn}
+  ,emph={[2]block,hide,comm,rename,allow,||,<>,sum,&&,=>}
+%  ,emphstyle={[2]\color{blue}}2
+  ,framerule=1pt
+  ,backgroundcolor=\transparent{0.02}\color{black}
+  ,rulecolor=\color{black!30}
+  ,frame=tblr
+  ,xleftmargin=4pt
+  ,xrightmargin=4pt
+  ,captionpos=b
+%  ,belowcaptionskip=\medskipamount
+  ,aboveskip=\baselineskip
+  ,floatplacement=htb
+}
 
-\lstdefinestyle{bash}{literate=*}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\lstdefinestyle{bash}{style=mcrl2,literate=*}
 \newcommand{\code}[2][]{\lstinline[basicstyle=\ttfamily\relsize{-0.5},columns=fullflexible,keepspaces,#1]!#2!}
 \newcommand{\mcode}[1]{\text{\code{#1}}}
-\newcommand{\bash}[1]{\lstinline[basicstyle=\ttfamily\relsize{-0.5}\color{darkgreen},keywordstyle=\bf\sffamily\color{purple},columns=fullflexible,keepspaces,literate=*]±#1±}
+\newcommand{\bash}[1]{\lstinline[style=mcrl2,basicstyle=\ttfamily\relsize{-0.5}\color{darkgreen},keywordstyle=\bf\sffamily\color{purple},columns=fullflexible,keepspaces,literate=*]!#1!}
 
 
 
