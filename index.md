@@ -40,7 +40,9 @@ Students should:
 - __19 Sep '24__: Overview of the module and introduction to model checking (Slides [1-intro.pdf](slides/1-intro.pdf)). Starting to describe transition systems with functors (slides [2-behaviour](slides/2-behaviour.pdf), frames 1-6).
 - __24 Sep '24__: Transition systems with functors; syntax of sequential process algebra (slides [2-behaviour](slides/2-behaviour.pdf), frames 6-18).
 - __26 Sep '24__: Syntax and semantics of CCS (slides [2-behaviour](slides/2-behaviour.pdf), frames 18-29).
--  __1 Oct '24__: Modelling in mCRL2 (slides [3-mCRL2](slides/2-mcrl2.pdf), frames 1-12)...
+-  __1 Oct '24__: Modelling in mCRL2 (slides [3-mCRL2](slides/3-mcrl2.pdf), frames 1-12).
+-  __3 Oct '24__: No lesson.
+- __8 Oct '24__: Equivalence of transition systems (slides [2-behaviour](slides/2-behaviour.pdf), frames 13-...).
 
 
 
@@ -68,6 +70,7 @@ Students should:
 ### Extra material
 
 - [mCRL2 tutorial](exercises/adventurers/adventurers-tutorial-mcrl2.zip)
+- [1st assignment on mCRL2](exercises/mcrl2-assignment.zip)
 
 <!-- 
 ### Complementary Bibliography
