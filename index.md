@@ -70,7 +70,7 @@ Students should:
 ### Extra material
 
 - [mCRL2 tutorial](exercises/adventurers/adventurers-tutorial-mcrl2.zip)
-- [1st assignment on mCRL2](exercises/mcrl2-assignment.zip)
+- [1st assignment on mCRL2](exercises/mcrl2-assignment.pdf)
 
 <!-- 
 ### Complementary Bibliography
