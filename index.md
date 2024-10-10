@@ -42,7 +42,8 @@ Students should:
 - __26 Sep '24__: Syntax and semantics of CCS (slides [2-behaviour](slides/2-behaviour.pdf), frames 18-29).
 -  __1 Oct '24__: Modelling in mCRL2 (slides [3-mCRL2](slides/3-mcrl2.pdf), frames 1-12).
 -  __3 Oct '24__: No lesson.
-- __8 Oct '24__: Equivalence of transition systems (slides [2-behaviour](slides/2-behaviour.pdf), frames 13-...).
+- __8 Oct '24__: Equivalence of transition systems (slides [2-behaviour](slides/2-behaviour.pdf), frames 13-38).
+- __10 Oct '24__: Modal logics (slides [4-modal-logic.pdf](slides/4-modal-logic.pdf), frames 1-...).
 
 
 
