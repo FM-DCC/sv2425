@@ -43,7 +43,9 @@ Students should:
 -  __1 Oct '24__: Modelling in mCRL2 (slides [3-mCRL2](slides/3-mcrl2.pdf), frames 1-12).
 -  __3 Oct '24__: No lesson.
 - __8 Oct '24__: Equivalence of transition systems (slides [2-behaviour](slides/2-behaviour.pdf), frames 13-38).
-- __10 Oct '24__: Modal logics (slides [4-modal-logic.pdf](slides/4-modal-logic.pdf), frames 1-...).
+- __10 Oct '24__: Modal logics (slides [4-modal-logic.pdf](slides/4-modal-logic.pdf), frames 1-24).
+- __15 Oct '24__: Exercises: specifying and explaining concrete formulas in process logic; process logic with regular expressions (slides [4-modal-logic.pdf](slides/4-modal-logic.pdf), frames 25-31).
+- __17 Oct '24__: Modal logic in mCRL2 (slides [3-mCRL2](slides/3-mcrl2.pdf); Process logic vs. bisimulations (slides [4-modal-logic.pdf](slides/4-modal-logic.pdf), frames 33-...).
 
 
 

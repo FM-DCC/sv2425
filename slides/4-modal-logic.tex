@@ -506,7 +506,7 @@ where $\alert{K := a\in Act~~|~~K+K}$
   \item $S_1 \not \models \almb a(\evmb b \true \land \evmb c \true)$\\
   \item $S_2 \models \almb b \almb c(\evmb a \true \lor \evmb b \true)$\\
   \item $S_1 \models \almb b \almb c(\evmb a \true \lor \evmb b \true)$    
-  \item $S_1 \models \almb{a+b} \evmb{b+c}(\evmb a \true)$    
+  \item $S_1 \not \models \almb{a+b} \evmb{b+c}(\evmb a \true)$    
 %  \item $S_2 \models [a](⟨b⟩tt ∧ ⟨c⟩tt)$\\
 %  \item $S_1 \not \models [a](⟨b⟩tt ∧ ⟨c⟩tt)$\\
 %  \item $S_2 \models [b][c](⟨a⟩tt ∨ ⟨c⟩tt)$\\
@@ -1035,10 +1035,10 @@ Each logic accepts a different set of \emph{principles} or \emph{rules} (with va
   \only<2>{~\\[-11mm]
   \begin{exampleblock}{Examples}
   \begin{itemize}
-    \item ``$\evm{a.b.c}{\true}$'' means ``$\diam{a}\diam{b}\diam{c}\,\true$'' 
-    \item ``$\alm{a.b.c}{\false}$'' means ``$\boxx{a}\boxx{b}\boxx{c}\,\false$'' 
-    \item ``$\evm{a^{*}.b}{\true}$'' means that $b$ can be taken after some number of $a$'s. 
-    \item ``$\evm{-^{*}.a}{\true}$'' means that $a$ can \alert{eventually} be taken
+    \item ``$\evm{a;b;c}{\true}$'' means ``$\diam{a}\diam{b}\diam{c}\,\true$'' 
+    \item ``$\alm{a;b;c}{\false}$'' means ``$\boxx{a}\boxx{b}\boxx{c}\,\false$'' 
+    \item ``$\evm{a^{*};b}{\true}$'' means that $b$ can be taken after some number of $a$'s. 
+    \item ``$\evm{-^{*};a}{\true}$'' means that $a$ can \alert{eventually} be taken
     \item ``$\boxx{-^{*}}\evm{a+b}{\true}$'' means it is \alert{always}  possible to do $a$ or $b$
   \end{itemize}
   \end{exampleblock}
@@ -1062,8 +1062,8 @@ Each logic accepts a different set of \emph{principles} or \emph{rules} (with va
       \\~
       \item $\evmb{-}\true$
       \item $\almb{-^{*}}\evmb{-}\true$
-      \item $\almb{-^{*}.a}\evmb{b}\true$
-      \item $\almb{-^{*}.send} \evmb{(-send)^{*}.recv}\true$
+      \item $\almb{-^{*};a}\evmb{b}\true$
+      \item $\almb{-^{*};send} \evmb{(-send)^{*};recv}\true$
     \end{itemize}
     }
   }
