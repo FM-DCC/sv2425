@@ -115,37 +115,51 @@ video/audio equipment. Correctness depends crucially on
 % fim slides motivacao
 
 
-\begin{frame}{Course structure}
-  \centering
-  ~\\[0mm]
-
-  \begin{enumerate}
-    \alert{\item \textbf{Real-time models}
+\begin{slide}{Syllabus}
+  \frsplitt{
     \begin{itemize}
-      \item Timed Automata and Hybrid Automata
-      \item Temporal logic
-      \item Static verification using UPPAAL
-    \end{itemize}}
-
-    \item \textbf{Program verification}
-    \begin{itemize}
-      \item First Order Logic revisited
-      \item Abstract Program Semantics
-      \item Design by Contract and Hoare Logic
-      \item Verification of annotated programs
-      % \item Runtime Verification
+      \item Introduction to model-checking
+      \item CCS: a simple language for concurrency
+      \begin{itemize}
+        \item Syntax
+        \item Semantics
+        \item Equivalence
+        \item mCRL2: modelling
+      \end{itemize}
+      \item Dynamic logic
+      \begin{itemize}
+        \item Syntax
+        \item Semantics
+        \item Relation with equivalence
+        \item {mCRL2}: verification
+      \end{itemize}
     \end{itemize}
-
-    \item \textbf{Requirements}
+  }{
     \begin{itemize}
-      \item SAT and SMT solvers 
-      \item \emph{Automatic} theorem proving using \alert{Z3}
-      % \item Dependent types and certified programming
-      \item Introduction to \emph{Interactive} theorem proving using \alert{Coq}
+      \alert{
+      \item  {Timed Automata}
+      \begin{itemize}
+        \item Syntax
+        \item Semantics (composition, Zeno)
+        \item Equivalence
+        \item \structure{UPPAAL}: modelling
+      \end{itemize}
+      }
+      \item Temporal logics (LTL/CTL)
+      \begin{itemize}
+        \item Syntax
+        \item Semantics
+        \item {UPPAAL}: verification
+      \end{itemize}
+      \item Probabilistic and stochastic systems
+      \begin{itemize}
+        \item Going probabilistic
+        \item {UPPAAL}: monte-carlo
+      \end{itemize}
     \end{itemize}
-  \end{enumerate}
+  }
+\end{slide}
 
-\end{frame}
 
 \begin{frame}{Table of contents}
   \setbeamertemplate{section in toc}[sections numbered]

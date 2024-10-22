@@ -1353,39 +1353,39 @@ Give a modal formula that can be satisfied at point $1$ but not at $3$.
 \end{exampleblock}
 
 \end{slide}
+% ----------------------------------------------------------------------------------
+\begin{slide}{Invariance and definability}\label{s:33}
+\small
+To prove the converse of the invariance lemma requires passing to an \alert{infinitary} modal language  with arbitrary (countable) conjunctions and disjunctions. Alternatively, and more usefully, it can be shown  for \alert{finite} models:
+\begin{block}{Lemma (modal equivalence implies bisimulation)}
+\alert{If} two states $s, s'$ from two finite models $\ger{M} = \pair{\pair{S, R}, V}$ and $\ger{M}' = \pair{\pair{S', R'}, V'}$ satisfy the same modal formulas,
+\\
+\alert{then} there is a bisimulation $B \subseteq S \times S'$  such that $s B s'$.
+ \end{block}
+\end{slide}
+
 %----------------------------------------------------------------------------------
-% \begin{slide}{Invariance and definability}\label{s:33}
-% \small
-% To prove the converse of the invariance lemma requires passing to an \alert{infinitary} modal language  with arbitrary (countable) conjunctions and disjunctions. Alternatively, and more usefully, it can be shown  for \alert{finite} models:
-% \begin{block}{Lemma (modal equivalence implies bisimulation)}
-% \red{If} two points $w, w'$ from two finite models $\ger{M} = \pair{\pair{W, R}, V}$ and $\ger{M}' = \pair{\pair{W', R'}, V'}$ satisfy the same modal formulas,
-% \\
-% \red{then} there is a bisimulation $S \subseteq W \times W'$  such that $w S w'$.
-%  \end{block}
-% \end{slide}
+\begin{slide}{Invariance and definability}\label{s:34}
+\small
+\begin{block}{Note}
+\begin{itemize}
+\item The result can be \structure{weakened} to \alert{image-finite} models.
+\item Combining this result with the invariance lemma one gets the so-called \structure{modal equivalence theorem} stating that, for image-finite models, bisimilarity and modal equivalence coincide. The result is also known as the \structure{Hennessy-Milner theorem} who first proved it for process logics.
+%\item the situation is similar to what happens in first-order logic: first-order formulas are invariant for \alert{potential isomorphism}, but the converse only holds in a weak formulation: two models are potentially isomorphic iff they have the same complete theory in the \alert{infinitary} first-order logic.
+\end{itemize}
+\end{block}
 
-% %----------------------------------------------------------------------------------
-% \begin{slide}{Invariance and definability}\label{s:34}
-% \small
-% \begin{block}{Note}
-% \begin{itemize}
-% \item The result can be \structure{weakened} to \alert{image-finite} models.
-% \item Combining this result with the invariance lemma one gets the so-called \structure{modal equivalence theorem} stating that, for image-finite models, bisimilarity and modal equivalence coincide. The result is also known as the \structure{Hennessy-Milner theorem} who first proved it for process logics.
-% %\item the situation is similar to what happens in first-order logic: first-order formulas are invariant for \alert{potential isomorphism}, but the converse only holds in a weak formulation: two models are potentially isomorphic iff they have the same complete theory in the \alert{infinitary} first-order logic.
-% \end{itemize}
-% \end{block}
-
-% \begin{exampleblock}{Exercise}
-% \begin{itemize}
-% \item Give an example of modally equivalent states in different Kripke structures which fail to be bisimilar.
-% % infinite models: one modal formula satisfies 2 non-bisimilar (infinite) models
-% % m1: infinte branching of finite steps 0, 0-1, 0-1-2, 0-1-2-3,...
-% % m2: same as m1, but with an extra infinitly long branch
-% % For every point, 
-% % https://books.google.pt/books?id=ql_dBtNOOeAC&pg=PA63&lpg=PA63&dq=not+bisimilar+infinite&source=bl&ots=ONMAmSjJ2E&sig=XpHSBzXyjJ0TUmImDu1Eg8MFnd4&hl=en&sa=X&redir_esc=y#v=onepage&q=not%20bisimilar%20infinite&f=false
-% \end{itemize}
-% \end{exampleblock}
-% \end{slide}
+\begin{exampleblock}{Exercise}
+\begin{itemize}
+\item Give an example of modally equivalent states in different Kripke structures which fail to be bisimilar.
+% infinite models: one modal formula satisfies 2 non-bisimilar (infinite) models
+% m1: infinte branching of finite steps 0, 0-1, 0-1-2, 0-1-2-3,...
+% m2: same as m1, but with an extra infinitly long branch
+% For every point, 
+% https://books.google.pt/books?id=ql_dBtNOOeAC&pg=PA63&lpg=PA63&dq=not+bisimilar+infinite&source=bl&ots=ONMAmSjJ2E&sig=XpHSBzXyjJ0TUmImDu1Eg8MFnd4&hl=en&sa=X&redir_esc=y#v=onepage&q=not%20bisimilar%20infinite&f=false
+\end{itemize}
+\end{exampleblock}
+\end{slide}
 
 
 % %----------------------------------------------------------------------------------
@@ -1742,19 +1742,19 @@ where $\mathsf{NOM}$ is the set of nominals in the model
 
 
 %----------------------------------------------------------------------------------
-% \begin{slide}{Hybrid logic}\label{s:49}
-% \small
+\begin{slide}{Hybrid logic}\label{s:49}
+\small
 
-% \begin{block}{Increased frame definability}
-% \begin{itemize}
-% \item \alert{irreflexivity}: $i \impp \neg \eventual i$\\
-% \item \alert{asymmetry}: $i \impp \neg \eventual \eventual i$\\
-% \item \alert{antisymmetry}: $i \impp \always (\eventual i \impp i)$\\
-% \item \alert{trichotomy}: $@_j \eventual i\; \lor\; @i_j    \; \lor\;   @_i \eventual j$
-% \end{itemize}
-% \end{block}
+\begin{block}{Increased frame definability}
+\begin{itemize}
+\item \alert{irreflexivity}: $i \impp \neg \eventual i$\\
+\item \alert{asymmetry}: $i \impp \neg \eventual \eventual i$\\
+\item \alert{antisymmetry}: $i \impp \always (\eventual i \impp i)$\\
+\item \alert{trichotomy}: $@_j \eventual i\; \lor\; @i_j    \; \lor\;   @_i \eventual j$
+\end{itemize}
+\end{block}
 
-% \end{slide}
+\end{slide}
 
 
 
