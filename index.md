@@ -47,6 +47,7 @@ Students should:
 - __15 Oct '24__: Exercises: specifying and explaining concrete formulas in process logic; process logic with regular expressions (slides [4-modal-logic.pdf](slides/4-modal-logic.pdf), frames 25-31).
 - __17 Oct '24__: Modal logic in mCRL2 (slides [3-mCRL2](slides/3-mcrl2.pdf); Process logic vs. bisimulations; Richer modal logics (slides [4-modal-logic.pdf](slides/4-modal-logic.pdf), frames 33-47).
 - __22 Oct '24__: LTL, CTL, and Hybrid logic; Frame definability (slides [4-modal-logic.pdf](slides/4-modal-logic.pdf), frames 47-53). Introduction to timed automata (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 1-12).
+- __24 Oct '24__: Timed automata and its composition, formally; Quick introduction to Uppaal (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 12-21).
 
 
 

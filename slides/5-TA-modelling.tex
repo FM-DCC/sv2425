@@ -768,7 +768,7 @@ A \structure{timelock} represents a situation that causes time progress to halt 
   \uppbox[4.5cm]{Terminal}{./images/SwitchB} 
 \end{center}
 
-State $\pair{on,2}$ is reachable through path 
+State $\pair{on,2}$ \only<1>{$\ldots$}\pause is reachable through path 
 $$\pair{off,0} \trans{s-on} \pair{on,0} \trans{2} \pair{on,2}$$
 and is terminal
 
@@ -784,7 +784,7 @@ and is terminal
   \uppbox[4.5cm]{Timelock - NotTerminal}{./images/SwitchC} 
 \end{center}
 
-State $\pair{on,2}$ is not terminal but has a \structure{convergent} path:
+State $\pair{on,2}$ \only<1>{$\ldots$}\pause is not terminal but has a \structure{convergent} path:
 
 $$\pair{on,2} \pair{on,2.9}  \pair{on,2.99}  \pair{on,2.999}  ...$$
 
