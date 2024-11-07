@@ -49,6 +49,7 @@ Students should:
 - __22 Oct '24__: LTL, CTL, and Hybrid logic; Frame definability (slides [4-modal-logic.pdf](slides/4-modal-logic.pdf), frames 47-53). Introduction to timed automata (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 1-12).
 - __24 Oct '24__: Timed automata and its composition, formally; Quick introduction to Uppaal (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 12-21).
 - __5 Nov '24__: Exercises on the composition of Timed Automata; Modelling in Uppaal; Introduction to the semantics of Timed Automata, formally (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 21-29).
+- __7 Nov '24__: Semantics of Timed Automata, formally; Timelocks and zeno paths (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 29-38).
 
 
 <!--

@@ -724,13 +724,13 @@ ie, the \alert{infinite sequence of delays converges toward $d$}
 \small
 
 \begin{block}{Definition}
-An infinite path fragment $\rho$ is \structure{time-divergent} if $\ET{\rho} = \infty$\\
+An infinite path fragment $\rho = s_0 \trans{\delta_0} s_1 \trans{\delta_1} \ldots$ is \structure{time-divergent} if $\ET{\rho} = \infty$\\
 Otherwise is  \structure{time-convergent}. 
 \end{block}
 
 where
 \begin{align*}
-\ET{\rho}\; & =\; \sum_{i=0 .. \infty} \ET{\delta}\\
+\ET{\rho}\; & =\; \sum_{i=0 .. \infty} \ET{\delta_i}\\
 \ET{\delta}\; & =\; \begin{cases}
 0 & \rimp\;  \delta \in Act\\
 \delta & \rimp\:  \delta \in \R_0^+
@@ -867,7 +867,7 @@ The user presses $in$ \alert{faster and faster}:
     {\centering
     \uppbox[40mm]{Lamp}{./images/Lamp.pdf}
     \tikz[remember picture,overlay]{%
-      \node[pink!40!purple,font=\sf\tiny,xshift=16mm,yshift=2mm] at (current page.center){y<=3600};}
+      \node[pink!40!purple,font=\sf\tiny,xshift=16mm,yshift=-2mm] at (current page.center){y<=3600};}
 
     }
     \begin{enumerate}
@@ -1112,12 +1112,12 @@ the assignment $j:=t$
 
 \begin{center}
 % \includegraphics[width=5cm]{./images/tg2.jpg} 
-\uppbox[5cm]{Gate}{./images/Gate}
+\uppbox[4cm]{Gate}{./images/Gate}
 \end{center}
 
 \begin{itemize}
 \item Note the use of parameters and the select clause on transitions
-\item Programming ...
+\item C-like program under the hood
 \end{itemize}
 
 \end{slide}
