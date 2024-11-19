@@ -50,7 +50,11 @@ Students should:
 - __24 Oct '24__: Timed automata and its composition, formally; Quick introduction to Uppaal (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 12-21).
 - __5 Nov '24__: Exercises on the composition of Timed Automata; Modelling in Uppaal; Introduction to the semantics of Timed Automata, formally (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 21-29).
 - __7 Nov '24__: Semantics of Timed Automata, formally; Timelocks and zeno paths (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 29-38).
-- __9 Nov '24__: Revision on timelocks and zeno paths; modelling extensions in Uppaal (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 36-55).
+- __12 Nov '24__: Revision on timelocks and zeno paths; modelling extensions in Uppaal (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 36-55).
+- __14 Nov '24__: Comparing Timed Automata (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 1-..).
+- __19 Nov '24__: ...
+- __21 Nov '24__: ...
+
 
 
 <!--
@@ -67,7 +71,7 @@ Students should:
 3. [mCRL2 tool](slides/3-mcrl2.pdf)
 4. [Modal logic](slides/4-modal-logic.pdf)
 5. [Timed automata: modelling](slides/5-TA-modelling.pdf)
-5. [Timed automata: verifying](slides/5-TA-verification.pdf)
+5. [Timed automata: verifying](slides/6-TA-verification.pdf)
 
 ### Main book
 
