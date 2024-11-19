@@ -51,9 +51,9 @@ Students should:
 - __5 Nov '24__: Exercises on the composition of Timed Automata; Modelling in Uppaal; Introduction to the semantics of Timed Automata, formally (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 21-29).
 - __7 Nov '24__: Semantics of Timed Automata, formally; Timelocks and zeno paths (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 29-38).
 - __12 Nov '24__: Revision on timelocks and zeno paths; modelling extensions in Uppaal (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 36-55).
-- __14 Nov '24__: Comparing Timed Automata (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 1-..).
-- __19 Nov '24__: ...
-- __21 Nov '24__: ...
+- __14 Nov '24__: Comparing Timed Automata (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 1-6).
+- __19 Nov '24__: Timed and untimed bisimulations (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 6-11)
+- __21 Nov '24__: CTL in Uppaal (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 12-...)
 
 
 
