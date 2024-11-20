@@ -1,0 +1,250 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{etex} % fixes new-dimension error
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx,amsmath}
+\usepackage{stmaryrd} % cf. interleave
+\usepackage{booktabs}
+\usepackage{amscd}
+\usepackage{multicol}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{alltt}
+\usepackage{proof}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[new]{old-arrows}
+\usepackage[all]{xy}
+\usepackage{pgfplots}
+\usepackage{textcomp}
+
+\input{macros/macros}
+%-------------- template --------------------------------------------------
+\input{macros/beamerconf}
+%----------------------------------------------------------------------------
+
+%------ using pstricks (rnode etc) ------------------------------------------
+% \usepackage{pstricks,pst-node,pst-text,pst-3d}
+
+% % context
+% \AtBeginSection[]
+% {
+%     \begin{frame}
+%         \frametitle{Table of Contents}
+%         \tableofcontents[currentsection]
+%     \end{frame}
+% }
+% \author[Renato Neves]{Renato Neves}
+% % logos of institutions
+% \titlegraphic{
+%   \begin{textblock*}{5cm}(6.7cm,7.45cm)
+%      \includegraphics[scale=0.06]{images/uminho.png}\hspace*{.85cm}~%
+%   \end{textblock*}
+%   \begin{textblock*}{5cm}(9.4cm,7.45cm)
+%     \includegraphics[scale=0.50]{images/haslab.pdf}
+%   \end{textblock*}
+% }
+% % No date
+% \date{}
+
+
+\begin{document}
+
+
+% \title{
+%   Time-critical reactive systems \\ (Verification )  }
+
+% \frame[plain]{\titlepage}
+
+\setLecture{6}{Probabilities: Markov chains and statistical model checking}
+
+\frame[plain]{\titlepage}
+
+\section*{Where we are}
+
+\begin{slide}{Syllabus}
+  \frsplitt{
+    \begin{itemize}
+      \item Introduction to model-checking
+      \item CCS: a simple language for concurrency
+      \begin{itemize}
+        \item Syntax
+        \item Semantics
+        \item Equivalence
+        \item {mCRL2}: modelling
+      \end{itemize}
+      \item Dynamic logic
+      \begin{itemize}
+        \item Syntax
+        \item Semantics
+        \item Relation with equivalence
+        \item {mCRL2}: verification
+      \end{itemize}
+    \end{itemize}
+  }{
+    \begin{itemize}
+      \item  {Timed Automata}
+      \begin{itemize}
+        \item Syntax
+        \item Semantics (composition, Zeno)
+        \item Equivalence
+        \item {UPPAAL}: modelling
+      \end{itemize}
+      \item Temporal logics (LTL/CTL)
+      \begin{itemize}
+        \item Syntax
+        \item Semantics
+        \item {UPPAAL}: verification
+      \end{itemize}
+      \alert{
+      \item Probabilistic and stochastic systems
+      \begin{itemize}
+        \item Going probabilistic
+        \item \structure{UPPAAL}: monte-carlo
+      \end{itemize}
+      }
+    \end{itemize}
+  }
+\end{slide}
+
+\section{Going probabilistic}
+
+%----------------------------------------------------------------------------------
+\begin{frame}[t]\frametitle{Motivation}
+  \begin{block}{Systems can get very complex}
+    \begin{itemize}
+      \item E.g., 5 components, 3 possible traces each
+      \item No communication (pure interleaving)
+      \item 5 traces (or 7 components) -- becomes X
+      \\[5mm]
+      \pause
+      \item Verifying deadlock freedom (and others) requires traversing all states
+      \item \structure{Approximation}:
+      \begin{itemize}
+        \item traverse only part of the states
+        \item give more \structure{priority} to some actions
+        \item return (statistically) likelihood of a given property
+      \end{itemize}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[t]\frametitle{Recall: A taxonomy of transition systems}
+  \begin{itemize}
+    \item $\alpha: S \to \Act \times S$ \alert{Moore machine}
+    \item $\alpha: S \to \mathtt{Bool} \times S^{\Act}$ \alert{deterministic automata}
+    \item $\alpha: S \to \mathtt{Bool} \times \tikzmark{a1} \Pow(S)^{\Act} \tikzmark{a2}$ \alert{non-deterministic automata (reactive)}
+    \\~
+    \item $\alpha : S \to \Pow( N \times S )$ \alert{non deterministic LTS (generative)}
+    \item $\alpha : S \to (S + 1)^N$ \alert{partial deterministic LTS} % (reactive)}
+    \item $\alpha : S \to \Pow(S)$ \alert{unlabelled TS}
+    % \item $\alpha : S \to N \times S + 1$ \alert{partial LTS (generative)}
+    % \item $\alpha : S \to P(S)^N$ \alert{non deterministic LTS (reactive)}
+    \\~
+    \item $\alpha: S \to \tikzmark{b1} \Dist(S) \tikzmark{b2}$ \alert{Markov chain}
+
+  \end{itemize}  
+
+
+\end{frame}
+
+\begin{frame}[t]\frametitle{Bringing probabilities to transition systems}
+  
+  \begin{alertblock}{Markov chains}
+    $$\alpha : S \to \Dist(S)$$
+    where $D(S)$ is the set of all \alert{discrete probability distributions} on set $S$
+
+    A Markov chain goes from a state $s$ to a state $s'$ with probability $p$ if
+    $$\alpha(s) = \mu\text{~~~with~~~} \mu(s') = p > 0$$
+  \end{alertblock}
+
+  % \begin{block}{}
+  %   \begin{itemize}
+  %     \item $\mu: \Dist(S)$
+  %     \item $0\leq \mu(s)\leq 1$
+  %     \item $\sum_{s\in S} \mu(s) = 1$
+  %     \item 
+  %   \end{itemize}
+  % \end{block}
+
+% Notation
+% s->mu  and s-p->s' -- squigly
+\end{frame}
+
+
+\begin{frame}[t]\frametitle{Recall discrete distributions}
+
+  \begin{block}{Recall}
+  $\mu: S\to [0,1]$ is a \alert{discrete probability distribution} if
+  \begin{itemize}
+  \item $\{s \in S ~|~ \mu(s) >0\}$, is finite (called the \structure{support} of $\mu$), and
+  \item $\sum_{s\in S} \mu(s) = 1$
+  \end{itemize}
+  \end{block}
+
+  \begin{exampleblock}{Examples}
+  \begin{itemize}
+        \item \alert{Dirac distribution}: $\mu^1_s = \{s \to 1\}$
+        \item \alert{Product distribution}: $(\mu_1 \times\mu_2)\pair{s,t} = \mu_1(s) \times \mu 2(t)$
+  \end{itemize}    
+  \end{exampleblock}
+\end{frame}
+
+
+\begin{frame}[t]\frametitle{Example}
+  \centering
+
+    \wrap{\begin{tikzpicture}[aut]
+      \node[st,initial above,final]  (s_0) {$A_0$};
+      \node[st] (s_1) [above right of=s_0] {$A_1$};
+      \node[st] (s_2) [below right of=s_0] {$A_2$};
+      \path[->]
+        (s_0) edge  node {0.4}  (s_1)
+        (s_0) edge  node {0.4}  (s_2)
+        (s_1) edge  node {0.7}  (s_2)
+        (s_0) edge[loop left] node {0.2}  ()
+        (s_1) edge[loop right] node {0.3}  (s_1)
+        (s_2) edge[loop right] node {1}  (s_1);
+    \end{tikzpicture}}
+\end{frame}
+
+\begin{frame}[t]\frametitle{Reactive PTS}
+  \centering
+  {\Large \alert{$\alpha: S \to (\Dist(S) + 1)^N$}}
+
+  \bigskip
+
+  \doExercise{Formalise the systems below as functions}{
+  \centering
+  \wrap{\begin{tikzpicture}[aut]
+    \node[st,initial above,final]  (s_0) {$A_0$};
+    \node[st] (s_1) [above right of=s_0] {$A_1$};
+    \node[st] (s_2) [below right of=s_0] {$A_2$};
+    \path[->]
+      (s_0) edge  node {0.4}  (s_1)
+      (s_0) edge  node {0.4}  (s_2)
+      (s_1) edge  node {0.7}  (s_2)
+      (s_0) edge[loop left] node {0.2}  ()
+      (s_1) edge[loop right] node {0.3}  (s_1)
+      (s_2) edge[loop right] node {1}  (s_1);
+  \end{tikzpicture}}
+  ~~~~~~~~~~~
+    \wrap{\begin{tikzpicture}[aut]
+    \node[st,initial above,final]  (s_0) {$A_0$};
+    \node[st] (s_1) [above right of=s_0] {$A_1$};
+    \node[st] (s_2) [below right of=s_0] {$A_2$};
+    \path[->]
+      (s_0) edge  node {a[0.6]}  (s_1)
+      (s_0) edge  node {b[1]}  (s_2)
+      (s_1) edge  node {b[0.7]}  (s_2)
+      (s_0) edge[loop left] node {a[0.4]}  ()
+      (s_1) edge[loop right] node {b[0.3]}  (s_1);
+      % (s_2) edge[loop right] node {1}  (s_1);
+  \end{tikzpicture}}
+  
+  }
+
+\end{frame}
+
+\end{document}
