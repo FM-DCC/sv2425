@@ -250,9 +250,73 @@
   \end{block}
 \end{frame}
 
+
+
+
+
 \section{Probabilities in Uppaal}
 
-...
+\begin{frame}[t]\frametitle{Stochastic Timed Automata -- examples}
+  \centering    
+  \wrap{\uppbox[60mm]{A1}{images/A1.pdf}}~~~~~~~
+  \wrap{\uppbox[70mm]{A2}{images/A2.pdf}}\\[1mm]
+  \wrap{\uppbox[50mm]{A3}{images/A3.pdf}}
+\end{frame}
+
+\begin{frame}[t]\frametitle{A1: When does it end?}
+  \centering
+  \splittwo{0.4}{0.58}{
+    \wrap{\uppbox[60mm]{A1}{images/A1.pdf}}\\
+    \wrap{\uppbox[60mm]{A1's histogram}{images/A1-hist.pdf}}
+  }{
+    \begin{itemize}
+      \item Run 102000 times
+      \item Histogram: how many times it took [9..9.1] seconds?
+      \item ...
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}[t]\frametitle{A2: When does it end?}
+  \centering
+  \splittwo{0.4}{0.58}{
+    \wrap{\uppbox[50mm]{A2}{images/A2.pdf}}\\
+    \wrap{\uppbox[50mm]{A2's histogram}{images/A2-hist.pdf}}
+  }{
+    \begin{itemize}
+      \item Run 100000 times
+      \item Histogram: how many times it took [9..9.1] seconds?
+      \item ...
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}[t]\frametitle{A3: When does it end?}
+  \centering
+  \splittwo{0.4}{0.58}{
+    \centering
+    \wrap{\uppbox[30mm]{A3}{images/A3.pdf}}\\
+    \wrap{\uppbox[60mm]{A3's histogram}{images/A3-hist.pdf}}
+
+  }{
+    \begin{itemize}
+      \item Run 300000 times
+      \item Histogram: how many times it took [9..9.1] seconds?
+      \item ...
+    \end{itemize}
+  }
+\end{frame}
+
+
+\begin{frame}[t]\frametitle{Stochastic Automata}
+  \centering
+  {\Large \alert{$\alpha: S \to (\Dist(S\times Act \times ...) + 1) \times (R + \cc{C})$}}
+
+  \bigskip
+  ...
+\end{frame}
+
+
 
 \section{Probabilistic queries in Uppaal}
 
