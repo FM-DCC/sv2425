@@ -304,6 +304,62 @@
   \wrap{\uppbox[50mm]{A3}{images/A3.pdf}}
 \end{frame}
 
+\begin{slide}{Stochastic Timed automata Definition}
+\small
+
+\vspace*{-1mm}
+\begin{equation*}
+\mathbf{\pair{L, L_0, Act, C, Tr, Inv}}
+\end{equation*}
+\vspace*{-1mm}
+where
+\vspace*{-1mm}
+\begin{itemize}
+\item $L$ is a set of \structure{locations}, and $L_0 \subseteq L$ the set of \structure{initial} locations
+\item $Act$ is a set of \structure{actions} and $C$ a set of \structure{clocks}
+\item $Tr \subseteq L \times \cc{C} \times Act \times \pow{(C)} \times \alert{\N} \times L$ is the \structure{transition relation}
+\vspace*{-1mm}
+\begin{equation*}
+\ell_1\; \trans{g,a,U,\alert{w}}\;  \ell_2
+\end{equation*}
+\vspace*{-1mm}
+denotes a transition from location $\ell_1$ to $\ell_2$, \structure{labelled} by $a$, enabled if \structure{guard} $g$
+is valid, which, when performed, \structure{resets} the set $U$ of \structure{clocks}, \alert{with a probability given by the weight~$w$}
+\item $\fdec{Inv}{L}{\cc{C}\cup rate}$ is the assignment of \structure{invariants} \alert{or rates (of an exponential distribution)} to locations  
+\end{itemize}
+\vspace*{-1mm}
+where $\cc{C}$ denotes the  set of clock constraints over a set $C$ of clock variables
+\end{slide}
+
+\begin{frame}[t]\frametitle{Again A1,A2,A3: Timed PTS}
+  \centering
+  \splittwo{0.4}{0.58}{
+    \centering
+    \wrap{\uppbox[35mm]{A1}{images/A1.pdf}}\\
+    \wrap{\uppbox[42mm]{A2}{images/A2.pdf}}\\
+    \wrap{\uppbox[30mm]{A3}{images/A3.pdf}}\\
+    % \wrap{\uppbox[60mm]{A3's histogram}{images/A3-hist.pdf}}
+
+  }{
+    \begin{itemize}
+      \item Probability of $\pair{A1_0,0} \trans{0.5} \pair{A1_0,0.5}$?
+      % \pause
+      \item Probability of $\pair{A2_0,0} \trans{0.5} \pair{A2_0,0.5}$?
+      \pause
+      \item Probability of $\pair{A3_0,0} \trans{0.5} \pair{A3_0,0.5}$?
+      \pause
+      \item Probability of reaching $A1_1$?
+      \item Probability of reaching $A2_1$?
+      \pause
+      \item Probability of reaching $A3_{END}$ in less than 4.3?
+      \\ = ...
+    \end{itemize}
+  }
+\end{frame}
+
+
+
+
 \begin{frame}[t]\frametitle{A1: When does it end?}
   \centering
   \splittwo{0.4}{0.58}{
@@ -395,22 +451,6 @@
 
 
 
-\begin{frame}[t]\frametitle{Again A3: Timed PTS}
-  \centering
-  \splittwo{0.4}{0.58}{
-    \centering
-    \wrap{\uppbox[30mm]{A3}{images/A3.pdf}}\\
-    \wrap{\uppbox[60mm]{A3's histogram}{images/A3-hist.pdf}}
-
-  }{
-    \begin{itemize}
-      \item Probability of $\pair{s_0,0} \trans{0.5} \pair{s_0,0.5}$?
-      \pause
-      \item Probability of reaching END in less than 4.3?
-      \\ = ...
-    \end{itemize}
-  }
-\end{frame}
 
 
 
