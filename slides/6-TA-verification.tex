@@ -747,7 +747,7 @@ trying to access the critical section, is $k$ (cf. \alert{invariant} in state $r
 %\includegraphics[width=12cm]{./images/ficher2.jpg} 
 \begin{lstlisting}[emph={[2]forall,not}]
 % P(1) requests access => it will eventually wait
-P(1).req -> P(1).wait
+P(1).req --> P(1).wait
 % the algorithm is deadlock-free
 A[] not deadlock
 % mutual exclusion invariant

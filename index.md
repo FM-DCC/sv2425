@@ -54,6 +54,7 @@ Students should:
 - __14 Nov '24__: Comparing Timed Automata (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 1-6).
 - __19 Nov '24__: Timed and untimed bisimulations (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 6-11)
 - __21 Nov '24__: CTL in Uppaal (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 12-...)
+- __26 Nov '24__: Review CTL in Uppaal; mutual exclusion examples in Uppaal (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 19-41)
 
 
 
