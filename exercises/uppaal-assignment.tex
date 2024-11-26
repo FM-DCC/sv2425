@@ -1,0 +1,328 @@
+\documentclass[11pt]{article}
+
+\input{macros}
+\date{System verification -- 2024/2025}
+
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Specification and Verification in Uppaal}
+\author{Jos\'{e} Proen\c{c}a
+\\
+jose.proenca@fc.up.pt}
+ 
+\maketitle
+
+\descrbox{To do}{
+  Develop the requested Uppaal specification and requirements, and produce a report in PDF, including screenshots of the requested timed automata.  
+}
+
+\descrbox{What to submit}{
+  The \emph{PDF report} \textbf{and} the developed \emph{Uppaal models}.
+}
+
+\descrbox{How to submit using git}{
+  \begin{enumerate}[itemsep=1pt,leftmargin=20pt]
+    \item Use the git repository used for the first assignment on mCRL2 and extend it.
+    \item Make sure that \bash{jose.proenca@fc.up.pt} was added as a member of the group (read-permissions are enough).
+    \item Include all the files to be submitted in the repository.
+  \end{enumerate}
+  Note that \textbf{all students should push commits.}
+}
+
+\descrbox{Deadline}{
+  % \textbf{Extended:}
+  4 Jan (Saturday) 
+}
+
+
+
+
+% \myparagraph{Deadline part II:} 31 May 2017 @ 23h59 (Wednesday)
+ 
+% \section*{Part I - Real time}
+
+%The train gate example is distributed with Uppaal. It is a railway control system which
+% - controls access to a bridge for several trains.
+%
+%BRIDGE: a critical shared resource that may be accessed only by one train at a time.
+%SYSTEM: a number of trains (assume 4 for this example) + a controller.
+%
+%TRAIN: sends approach, waits 10 secs for stop! signal,
+% - not stopped: after 10 more it reaches the gate/bridge;
+% - stopped: waits for a go! signal - takes 7-15 sec to reach the cross after go!.
+% - sends a leave! signal after passing.
+% - after reaching the cross - 3-5 sec to cross.
+% (5 locations: Safe, Appr-oaching, Stop-ping, Start-ting, and Cross-sing)
+%
+%GATE: syncs with queue/contr and trains
+% - Can be free or occupied,
+% - starts Free, becomes Occupied
+%CONTROLER/QUEUE: (not for 2 trains)
+%
+%Start has the invariant x <= 15 and its outgoing transition has the constraint x >= 7
+%
+%A train can not be stopped instantly and restarting also takes time. Therefor, there are timing constraints on the trains before entering the bridge. When approaching, a train sends a appr! signal. Thereafter, it has 10 time units to receive a stop signal. This allows it to stop safely before the bridge. After these 10 time units, it takes further 10 time units to reach the bridge if the train is not stopped. If a train is stopped, it resumes its course when the controller sends a go! signal to it after a previous train has left the bridge and sent a leave! signal.
+
+%-----------------------------------------------------------------------------
+%\begin{exercise} \label{ex:train}
+%\textbf{[Train bridge]}
+%Consider a train bridge over a river shared by multiple trains. In this exercise we will consider only 2 trains. Only one train can cross the bridge at a time - a \emph{gate} controls who is allowed to cross the bridge at a given time. The desired model of the train bridge has the following extra requirements:
+%%
+%\begin{itemize}
+%  \item a Train notifies the Gate when it approaches the bridge;
+%  \item the Gate has 10 time units to notify the Train to stop (if another train is crossing the bridge);
+%  \item if the Gate does not send a stop notification within 10 time units, the Train must reach the bridge in another 10 time units;
+%  \item each Train takes between 3 and 5 time units to cross the bridge -- after that it sends a notification to the Gate that it is leaving;
+%  \item if a Train is told to stop, we assume it will take between 7 and 15 time units to reach the bridge;
+%\end{itemize}
+%\end{exercise}
+
+\newcommand{\compn}[1]{\textsf{\textcolor{purple}{#1}}\xspace}
+\newcommand{\chn}[1]{\textsf{\textcolor{teal}{#1}}\xspace}
+
+\section*{Motor controller in a Railway system}
+
+A railway company produces signalling systems that are used in critical systems. These must provide enough evidence over their reliability and correctness over time to comply with the heavy certification processes.
+
+This assignment is a simplification of recent use-case of an European project, depicted in \cref{fig:global-architecture}.
+In this use-case a critical \compn{motor} that rotates left and right interacts with a \compn{controller}. This controller runs on a resource-constrained device with a real-time OS. In turn, a remote \compn{dashboard} sends \chn{commands} and receives \chn{updates} to/from the controller. The goal of this assignment is to analyse the behaviour mainly of the \compn{controller}, interacting with the \compn{motor} and the \compn{dashboard}.
+
+\begin{figure}[tb]
+  \centering
+  \begin{tikzpicture}
+    \tikzstyle{nd}=[align=center,inner sep=7pt]
+    \node[nd](db){
+      \includegraphics[height=30pt]{img/dashboard.jpg}\\
+      Dashboard};
+    \node[nd,right=1.8 of db](cn){
+      \includegraphics[height=30pt]{img/board.png}\\
+      Controller};
+    \node[nd,right=1.8 of cn](circ){
+      \includegraphics[height=30pt]{img/motor.jpg}\\
+      Motor};
+    \node[below] at (db.south) {};
+    %
+    % \draw[<->,black,very thick]
+    %   (db)edge(cn) (pu)edge(circ);
+    \draw[->,black,very thick,bend left=6,above,font=\sffamily]
+      (db) edge node{commands} (cn)
+      (cn) edge node{commands} (circ)
+           edge node[below]{status} (db)
+      (circ) edge node[below]{status} (cn);
+
+    \pgfresetboundingbox
+    \draw [draw=none] (db.north west) rectangle (circ.south east);
+  \end{tikzpicture}
+  \caption{Architecture of the motor controller system under verification}
+  \label{fig:global-architecture}
+\end{figure}
+
+\myparagraph{Controller behaviour}
+The overall behaviour of the \compn{controller} is summarised in \cref{fig:motor-controllor-beh}.
+Initially the \compn{controller} is idle, where it must remain for at least 1000ms to perform some bootstrap self-tests. It can then receive a \chn{start} command to become ready to actuate.
+Once it is ready, it can receive a \chn{left} (resp. \chn{right}) command from the \compn{dashboard}, which will trigger an instruction \chn{move-left} (resp. \chn{move-right}) to the \compn{motor}.
+
+\begin{figure}[tb]
+  \centering
+  \begin{tikzpicture}
+    \tikzstyle{nd}=[circle,white,fill=green!70!black,
+      align=center,very thick, minimum width=12mm,inner sep=1pt,
+      font=\bfseries\sffamily]
+    \node[nd](idle){Idle};
+    \node[nd,right=1.5 of idle](ready){Ready};
+    \coordinate[right=1.5 of ready](move);
+    \node[nd,above=0.5 of move](left){Left};
+    \node[nd,below=0.5 of move](right){Right};
+    \node[nd,right=1.5 of move](error){Fall-\\[-2pt]back};
+    %
+    \coordinate[xshift=-10pt](start)at(idle.west);
+    \coordinate[yshift=3pt](top)at(left.north);
+    \coordinate[yshift=-3pt](bot)at(right.south);
+
+    \tikzstyle{arr}=[->,thick,font=\scriptsize\sffamily,sloped,
+                     inner sep=1pt,rounded corners=8pt]
+    \tikzstyle{err}=[color=red!75!black]
+    \draw[arr]
+      (idle) edge[<-] (start)
+      % (init)edge node[above]{all-ok}(idle)
+      (idle)edge node[above,black](start){start}(ready)
+      (ready) edge node[above]{left}(left)
+              edge node[above]{right}(right)
+              edge[err] node[above]{error}(error)
+      (left)  edge[err] node[above]{error}(error)
+      (right) edge[err] node[above]{error}(error);
+    \draw[arr] (error) |- (bot) node[below]{reset} -| (idle);
+    \draw[arr,err] (idle) |- (top) node[above]{error} -| (error);
+    % \draw[arr] (idle) |- (top)                    -| (error);
+    % \draw[arr,red] (st) -| (start) |- (top)      -| (error);
+    \draw[arr] (left) -| node[above,pos=0.4]{stop} (ready) ;
+    \draw[arr] (right) -| node[below,pos=0.4]{stop} (ready) ;
+    % \draw[arr,bend right] (idle) edge (st)
+                          % (st) edge (idle);
+    % \draw[arr] (idle) edge[white,-,line width=4pt] (ready) edge (ready);
+
+    \pgfresetboundingbox
+    \draw [draw=none] (idle|-top) rectangle (error|-bot);
+  \end{tikzpicture}
+  \caption{General behaviour of the controller component}
+  \label{fig:motor-controllor-beh}
+\end{figure}
+
+The \compn{controller} then checks every 400ms if the \compn{motor} reached the movement \chn{limit} or if it detected some \chn{error}. This check is made using a shared register between the \compn{motor} and the \compn{controller}.
+If the \compn{controller} detects that the limit is reached between 4000ms and 5000ms after the move instruction is sent, it becomes idle and notifies the \compn{dashboard}. Otherwise it 
+raises an \chn{error} (more info on this below) and goes to a fallback state.
+%
+If the motor is misbehaving, it should not take more than 6000ms to raise an error since the move-instruction is sent.
+While in a fallback state, the \compn{controller} waits for the \compn{dashboard} to send a \chn{reset} command to become idle again.
+
+
+\myparagraph{Raising errors}
+Everytime an error is raised by the \compn{controller}
+an \chn{error} message must be sent to the dashboard and
+a \chn{stop} message must be sent to the \compn{motor}.
+
+\myparagraph{Three components with global constants}
+The \compn{controller}'s core behaviour is described above. The \compn{dashboard} and the \compn{motor} will be also modelled as two dedicated timed automata.
+ % but we would like to have multiple implementations: one for each \textbf{scenario} (or a parameterised version of each).
+% Model at least a pair of \compn{dashboard} and \compn{motor} that behave well, i.e., interact in an expected way, and a pair that misbehaves and forces the system to reach a fallback state. You can model more scenarios to capture corner cases.
+  Your model should be parameterised by (at least) the following global constants:
+\begin{itemize}
+  % \item Maximum attempts;
+  \item Minimum and maximum time at the idle and start phase;
+  \item Minimum and maximum time to expect the limit to be reached;
+  \item Periodicity to read the status of the the motor;
+\end{itemize}
+
+
+
+
+\begin{myExercise} \label{ex:model}
+  Model this system as an UPPAAL model and \textbf{submit} it to the repository.
+  We would like to have multiple versions: one for each \textbf{scenario}.
+  % (or a parameterised version of each).
+  Each scenario will include a \compn{controller} and/or a \compn{motor} with different behaviour. 
+  Model at least two scenarios:
+  \begin{itemize}
+    \item when both \compn{dashboard} and \compn{motor} behave well, i.e., never lead the system to a fallback state;
+    \item when the motor misbehaves, i.e., leads the system to a fallback state.
+  \end{itemize}
+  You can model more scenarios to capture different cases when the system behaves well or misbehaves. \textbf{Describe} this UPPAAL model and the 3 scenarios in your report,
+\textbf{justifying} clearly your decisions (assumptions and abstractions) made in this modelling exercise.
+
+%   , including at least three scenarios....
+%   Include three concrete scenarios of this controller, i.e., assume that the dashboard performs three different fixed sequences of instructions at specific points in time.
+%   This is an open task: you should implement at least a \compn{controller}, a \compn{motor}, and a \compn{dashboard}, and you may use extra automata if needed. You can also include new assumptions or functionality, provided that you explain them.
+
+%   Your model should be parameterised by (at least) the following global constants:
+% \begin{itemize}
+%   % \item Maximum attempts;
+%   \item Minimum and maximum time at the idle and start phase;
+%   \item Minimum and maximum time to expect the limit to be reached;
+%   \item Periodicity to read the status of the the motor;
+% \end{itemize}
+% \end{myExercise}
+
+
+
+% \myparagraph{Critical implementation with 2 controllers}
+% \textbf{MOVE: ask to model the one above, and then a simpler 2-controller version check the last state at the ready state. THe dashboard will send the same message to both, but the motor can send different messages (e.g., at different times).}
+
+% A more complex version of this system uses 2 \compn{controllers} for redundancy, both interacting with the \compn{dashboard} and the \compn{motor}.
+% Every 100ms each of the two \compn{controllers} should check if the other controller is in the same state, using shared variables. After 3 failed attempts this controller should raise an error and go to its fallback state.
+
+% To be able to test this pair of \compn{controllers}, the \compn{dashboard} can also send a \chn{fail} command to any of the \compn{controllers}, rendering it useless.
+% Once a controller is faulty, it should not take more than 6000ms to raise an error since a successful \emph{start}, \emph{left}, or \emph{right} instruction is sent, or a movement \emph{limit} is reached.
+
+\end{myExercise}
+
+
+
+% \[\includegraphics[width=\textwidth]{RFID-conveyor.pdf}\]
+
+% \begin{myExercise} \label{ex:req}
+%   Write a set of 5 or more desirable requirements following the EARS approach based on the description of this system. If you want, you can make new assumptions not described above, making it explicit what is new.
+% \end{myExercise}
+
+
+
+% \begin{myExercise} \label{ex:model}
+%   Model this system as an UPPAAL model \textbf{without} the extension of the second controller.
+%   Include three concrete scenarios of this controller, i.e., assume that the dashboard performs three different fixed sequences of instructions at specific points in time.
+%   This is an open task: you should implement at least a \compn{controller}, a \compn{motor}, and a \compn{dashboard}, and you may use extra automata if needed. You can also include new assumptions or functionality, provided that you explain them.
+
+%   Your model should be parameterised by (at least) the following global constants:
+% \begin{itemize}
+%   % \item Maximum attempts;
+%   \item Minimum and maximum time at the idle and start phase;
+%   \item Minimum and maximum time to expect the limit to be reached;
+%   \item Periodicity to read the status of the the motor;
+% \end{itemize}
+% % Note that there may be several approaches, some more detailed than others, to model this system. 
+% Describe this UPPAAL model and the 3 scenarios in your report,
+% justifying clearly your decisions (assumptions and abstractions) made in this modelling exercise.
+% \end{myExercise}
+
+
+
+\begin{myExercise} \label{ex:model2}
+% \myparagraph{Critical implementation with 2 controllers}
+% \textbf{MOVE: ask to model the one above, and then a simpler 2-controller version check the last state at the ready state. THe dashboard will send the same message to both, but the motor can send different messages (e.g., at different times).}
+For safety reasons, these systems need redundancy to reduce the chances of failure.
+A safer system is a variation of the model above that
+% A more complex version of this system
+uses 2 \compn{controllers} for redundancy, both interacting with the \compn{dashboard} and the \compn{motor}.
+
+While in states \texttt{Ready}, \texttt{Left}, and \texttt{Right} (c.f. \cref{fig:motor-controllor-beh}, the two \compn{controllers} check if they are consistent. More specifically, every 100ms each of the two \compn{controllers} should check if the other controller is in the same state, using shared variables. After 3 failed attempts this controller should raise an error and go to its fallback state.
+
+Furthermore, the \compn{motor} uses two different channels (or shared variables) to send information to the two \compn{controllers} (which may be inconsistent in a faulty scenario).
+
+% To be able to test this pair of \compn{controllers}, the \compn{dashboard} can also send a \chn{fail} command to any of the \compn{controllers}, rendering it useless.
+% Once a controller is faulty, it should not take more than 6000ms to raise an error since a successful \emph{start}, \emph{left}, or \emph{right} instruction is sent, or a movement \emph{limit} is reached.
+
+Create an updated model of this system and \textbf{submit} it to the repository.
+  % Create an updated model based on the previous one that uses 2 controllers, as explained above.
+%
+As before, model at least two concrete scenarios, of a successful and an unsuccessful execution.
+ % as before, but now also considering fault injections.
+\textbf{Describe} this UPPAAL model and the 3 scenarios in your report,
+\textbf{justifying} clearly your decisions (assumptions and abstractions) made in this modelling exercise.
+%   Your model should be further parameterised by (at least) the following global constants:
+% \begin{itemize}
+%   \item Number of attempts to incorrectly detect a wrong state before raising an error;
+%   \item Periodicity to check for the state.
+%   % \item Minimum and maximum time at each phase;
+% \end{itemize}
+% % Note that there may be several approaches, some more detailed than others, to model this system. 
+% Describe this new UPPAAL model and the 3 scenarios in your report,
+% justifying clearly your decisions (assumptions and abstractions) made in this modelling exercise.
+\end{myExercise}
+
+
+\begin{myExercise} \label{ex:ctl}
+  Use UPPAAL's CTL logic to express and verify properties.
+  \subex{ \label{ex:ctl-req}
+  % Specify all properties from the requirements in \cref{ex:req}.
+  Formulate 4 properties of one of the systems above based on their descriptions. If you want, you can make new assumptions not described above, making it explicit what is new.
+  }
+
+  \subex{Express a property in UPPAAL's CTL logic for each item below. Fix a particular set of parameters (c.f. the problem description), and say if each property holds or not for your model (or if it takes too much time), and explain why.
+  \begin{enumerate}
+    \item It is possible to move the engine 3 time to the left in less than 15000ms;
+    \item Whenever a fallback state is reached, it must take at least 6000ms until the motor can turn again to the left.
+    \item Until a scenario is finished, the system does not deadlock.
+  \end{enumerate}
+  }
+
+  % \subex{Select 5 properties from \cref{ex:ctl-req}, and for each of them find different values for the parameters that satisfy and that reject them. Use the model from \cref{ex:model2} if available, or from \cref{ex:model} otherwise. If a given property is always true of false, justify informally why.}
+
+\end{myExercise}
+
+
+
+
+ 
+\end{document}

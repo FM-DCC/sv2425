@@ -53,7 +53,7 @@ Students should:
 - __12 Nov '24__: Revision on timelocks and zeno paths; modelling extensions in Uppaal (slides [5-TA-modelling.pdf](slides/5-TA-modelling.pdf), frames 36-55).
 - __14 Nov '24__: Comparing Timed Automata (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 1-6).
 - __19 Nov '24__: Timed and untimed bisimulations (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 6-11)
-- __21 Nov '24__: CTL in Uppaal (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 12-...)
+- __21 Nov '24__: CTL in Uppaal (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 12-25)
 - __26 Nov '24__: Review CTL in Uppaal; mutual exclusion examples in Uppaal (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 19-41)
 
 
