@@ -55,8 +55,11 @@ Students should:
 - __19 Nov '24__: Timed and untimed bisimulations (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 6-11)
 - __21 Nov '24__: CTL in Uppaal (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 12-25)
 - __26 Nov '24__: Review CTL in Uppaal; mutual exclusion examples in Uppaal (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 19-41)
-
-
+- __28 Nov '24__: Probabilistic transition systems (slides [7-mchains.pdf](slides/7-mchains.pdf), frames 1-16)
+- __3 Dec '24__: Probabilities in Uppaal
+- __5 Dec '24__: tba
+- __10 Dec '24__: tba
+- __12 Dec '24__: Revisions to the exam
 
 <!--
 - __29 Sep 24__: XYZ ([2-xyz.pdf - pages 13-36](slides/2-xyz.pdf)).
@@ -72,7 +75,9 @@ Students should:
 3. [mCRL2 tool](slides/3-mcrl2.pdf)
 4. [Modal logic](slides/4-modal-logic.pdf)
 5. [Timed automata: modelling](slides/5-TA-modelling.pdf)
-5. [Timed automata: verifying](slides/6-TA-verification.pdf)
+6. [Timed automata: verifying](slides/6-TA-verification.pdf)
+7. [Stochastic Timed automata](slides/7-mchains.pdf)
+8. [EARS approach](slides/8-ears.pdf)
 
 ### Main book
 
@@ -83,12 +88,14 @@ Students should:
 
 - [mCRL2 tutorial](exercises/adventurers/adventurers-tutorial-mcrl2.zip)
 - [1st assignment on mCRL2](exercises/mcrl2-assignment.pdf)
+- [2nd assignment on Uppaal](exercises/uppaal-assignment.pdf)
 
-<!-- 
+
 ### Complementary Bibliography
 
-- [The algorithm design manual;](https://www.algorist.com) _Skiena Steven S._;  ISBN: 978-1-84800-069-8
- -->
+- [mCRL2 Tutorial](https://www.mcrl2.org/web/user_manual/tutorial/tutorial.html), available from Uppaal's website
+- [Uppaal SMC Tutorial](https://uppaal.org/texts/uppaal-smc-tutorial.pdf), available from Uppaal's website
+
 
 <!-- 
 # Teaching methods and learning activities

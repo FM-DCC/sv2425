@@ -173,7 +173,7 @@ Once it is ready, it can receive a \chn{left} (resp. \chn{right}) command from t
 \end{figure}
 
 The \compn{controller} then checks every 400ms if the \compn{motor} reached the movement \chn{limit} or if it detected some \chn{error}. This check is made using a shared register between the \compn{motor} and the \compn{controller}.
-If the \compn{controller} detects that the limit is reached between 4000ms and 5000ms after the move instruction is sent, it becomes idle and notifies the \compn{dashboard}. Otherwise it 
+If the \compn{controller} detects that the limit is reached between 4000ms and 5000ms after the move instruction is sent, it becomes ready and notifies the \compn{dashboard}. Otherwise it 
 raises an \chn{error} (more info on this below) and goes to a fallback state.
 %
 If the motor is misbehaving, it should not take more than 6000ms to raise an error since the move-instruction is sent.
@@ -186,7 +186,7 @@ an \chn{error} message must be sent to the dashboard and
 a \chn{stop} message must be sent to the \compn{motor}.
 
 \myparagraph{Three components with global constants}
-The \compn{controller}'s core behaviour is described above. The \compn{dashboard} and the \compn{motor} will be also modelled as two dedicated timed automata.
+The \compn{controller}'s core behaviour is described above. The \compn{dashboard} and the \compn{motor} will be also modelled as three dedicated timed automata.
  % but we would like to have multiple implementations: one for each \textbf{scenario} (or a parameterised version of each).
 % Model at least a pair of \compn{dashboard} and \compn{motor} that behave well, i.e., interact in an expected way, and a pair that misbehaves and forces the system to reach a fallback state. You can model more scenarios to capture corner cases.
   Your model should be parameterised by (at least) the following global constants:
