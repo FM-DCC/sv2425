@@ -56,8 +56,8 @@ Students should:
 - __21 Nov '24__: CTL in Uppaal (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 12-25)
 - __26 Nov '24__: Review CTL in Uppaal; mutual exclusion examples in Uppaal (slides [6-TA-verification.pdf](slides/6-TA-verification.pdf), frames 19-41)
 - __28 Nov '24__: Probabilistic transition systems (slides [7-mchains.pdf](slides/7-mchains.pdf), frames 1-16)
-- __3 Dec '24__: Probabilities in Uppaal
-- __5 Dec '24__: tba
+- __3 Dec '24__: Probabilities in Uppaal (slides [7-mchains.pdf](slides/7-mchains.pdf), frames 16-30)
+- __5 Dec '24__: EARS approach to requirement engineering [8-ears.pdf](slides/8-ears.pdf), frames 1-38)
 - __10 Dec '24__: tba
 - __12 Dec '24__: Revisions to the exam
 

@@ -273,7 +273,8 @@
 \begin{frame}[fragile]
  \frametitle{THE EARS Patterns - Event Driven Requirements}
  \begin{block}{Event driven requirements}
-  Event driven requirements are initiated {\bf when and only when} a trigger occurs or is detected. They are denoted  by the keyword {\bf \color{mygreen} when}.
+  Event driven requirements are initiated {\bf when} % and only when}
+  a trigger occurs or is detected. They are denoted  by the keyword {\bf \color{mygreen} when}.
  \end{block}
  \begin{block}{Syntactic pattern}
   \begin{lstlisting}[language=EARS]
@@ -321,7 +322,6 @@ to fill the tank to the High Water Threshold}
    \end{block}
 \end{frame}
 %
-%%<<<<<<< HEAD
 \begin{frame}[fragile]
  \frametitle{THE EARS Patterns - Optional feature requirements}
  \begin{example}
@@ -458,7 +458,7 @@ to fill the tank to the High Water Threshold}
   \item \earsg{a second optical drive is installed}{the user selects to copy disks}{software}{display an option to copy directly from one optical drive to the other optical}
   \item \earsg{in start up mode}{the software detects an external flash card}{software}{use the external
 flash card to store photos}
-  \item {\bf \color{mygreen}when} the landing gear button is depressed once \earsw{the software detects that the landing gear does not lock into position}{software}{sound an alarm}
+  \item {\bf \color{mygreen}when} the landing gear button is pressed once \earsw{the software detects that the landing gear does not lock into position}{software}{sound an alarm}
   \end{itemize}
   \end{example}
 \end{frame}
@@ -513,7 +513,7 @@ flash card to store photos}
   State Driven 
   \end{block}
   \begin{block}{Requirement using EARS}
-    \earss{the mute button is depressed}{software}{mute the microphone}
+    \earss{the mute button is pressed}{software}{mute the microphone}
   \end{block}
 \end{frame}
 
@@ -598,8 +598,8 @@ remaining}{system}{shall display a warning message to switch to AC power}
     \item It must be possible to do \alert{$a$} after [doing \alert{$a$} and then \alert{$b$}].
     \item If a taxi is \alert{allo}{cated} to a service, it must first \alert{col}{lect} the passenger and then \alert{plan} the route.
     \item On detecting an \alert{emergency} the taxi becomes inactive.
-    \item The user \structure{can only have} \alert{coffee} after the \alert{coffee button} is pressed.
-    \item The used \structure{must have} \alert{coffee} after the \alert{coffee button} is pressed.
+    \item The user \structure{can have} \alert{coffee} after the \alert{coffee button} is pressed.
+    \item The user \structure{must have} \alert{coffee} after the \alert{coffee button} is pressed.
     \item It is always possible to \alert{turn off} the coffee machine.
     \item It is always possible to reach a state where the coffee machine can be \alert{turned off}.
     \item It is never possible to \alert{add chocolate} right after pressing the \emph{latte button}.
@@ -682,13 +682,13 @@ remaining}{system}{shall display a warning message to switch to AC power}
 \begin{frame}
   \frametitle{Solutions to the proposed exercises}
   \begin{block}{Requirement 6}
-    The user \structure{can only have} \alert{coffee} after the \alert{coffee button} is pressed.
+    The user \structure{can have} \alert{coffee} after the \alert{coffee button} is pressed.
   \end{block}
   \begin{block}{Type}
    Event Driven
   \end{block}
   \begin{block}{Rewritten in EARS}
-   \earse{the coffee button is depressed}{coffee machine}{be able to serve coffee}
+   \earse{the coffee button is pressed}{coffee machine}{be able to serve coffee}
   \end{block}
 \end{frame}
 
@@ -702,7 +702,7 @@ remaining}{system}{shall display a warning message to switch to AC power}
   \end{block}
   \begin{block}{Rewritten in EARS}
   \begin{itemize}
-    \item \earse{the coffee button is depressed}{coffee machine}{serve a coffee}
+    \item \earse{the coffee button is pressed}{coffee machine}{serve a coffee}
     \item \earse{a coffee is served}{user}{drink that coffee}
   \end{itemize}
    
@@ -747,6 +747,29 @@ remaining}{system}{shall display a warning message to switch to AC power}
    {\bf \color{mygreen} while} the machine is preparing a latte \earsw{chocolate button is pressed}{machine}{not add chocolate to the latte}
   \end{block}
 \end{frame}
+
+
+\begin{slide}{Exercise: more formulas, seen with Uppaal's CTL}
+  \splittwo{0.4}{0.6}{
+  \centering
+  \uppbox[4.5cm]{Lamp}{./images/Lamp}
+  }{
+  % \vspace*{-2mm}
+  \doExercise{Rewrite requirements in EARS, and identify their type}{
+    \vspace*{-8mm}
+    % \begin{multicols}{2}
+    \begin{enumerate}
+      \item The lamp can become bright;
+      \item The lamp will eventually become bright;
+      \item The lamp can never be on for more than 3600s;
+      \item It is possible to never turn on the lamp;
+      \item Whenever the light is bright, the clock $y$ is non-zero;
+      \item Whenever the light is bright, it will eventually become off.
+    \end{enumerate}
+    % \end{multicols}
+    }
+  }
+\end{slide}
 
 \section*{Applying and Troublshooting EARS}
 
@@ -1015,9 +1038,88 @@ the machine has no 1\euro~ coins, it cannot not sell fruit with a 2\euro~ coin. 
 the money back after inserting coins.
   \end{block}
   \doExercise{Identify requirements}{
-  Proceed with identifying requirements, classifying and writing them following the EARS patterns, and use the doorstop tool to produce the corresponding requirement specification requirements.
+  Proceed with identifying requirements, classifying and writing them following the EARS patterns.
+  % and use the doorstop tool to produce the corresponding requirement specification requirements.
   }
 \end{frame}
 
+
+\section{More system verification?}
+
+\begin{slide}{Syllabus}
+  \frsplitt{
+    \begin{itemize}
+      \item Introduction to model-checking
+      \item CCS: a simple language for concurrency
+      \begin{itemize}
+        \item Syntax
+        \item Semantics
+        \item Equivalence
+        \item \structure{mCRL2}: modelling
+      \end{itemize}
+      \item Dynamic logic
+      \begin{itemize}
+        \item Syntax
+        \item Semantics
+        \item Relation with equivalence
+        \item \structure{mCRL2}: verification
+      \end{itemize}
+    \end{itemize}
+  }{
+    \begin{itemize}
+      \item  {Timed Automata}
+      \begin{itemize}
+        \item Syntax
+        \item Semantics (composition, Zeno)
+        \item Equivalence
+        \item {UPPAAL}: modelling
+      \end{itemize}
+      \item Temporal logics (LTL/CTL)
+      \begin{itemize}
+        \item Syntax
+        \item Semantics
+        \item \structure{UPPAAL}: verification
+      \end{itemize}
+      \item Probabilistic and stochastic systems
+      \begin{itemize}
+        \item Going probabilistic
+        \item \structure{UPPAAL}: monte-carlo
+      \end{itemize}
+      \item \alert{EARS approach}
+    \end{itemize}
+  }
+\end{slide}
+
+\begin{frame}[fragile]\frametitle{More directions}
+    
+   \begin{itemize}
+     \item Timed processes (+ logic extension)
+\begin{lstlisting}[moreemph={act,init},morekeywords={Hammer}]
+act hit;
+proc Hammer(t:Real) = hit@(t+1).Hammer(t+1);
+init Hammer(0);
+\end{lstlisting}
+
+     \item Hybrid Automata
+     \begin{itemize}
+       \item Lince tool
+       \item \url{https://jose.proenca.org/publication/fmas-lince-2024/}
+     \end{itemize}
+
+     \item Verifying families of timed automata
+     \begin{itemize}
+       \item Uppex tool
+       \item \url{https://jose.proenca.org/publication/proenca-verification-2022/}
+       \item \url{https://jose.proenca.org/publication/proenca-spreadsheet-2023/}
+     \end{itemize}
+
+     \item Checking communication protocols with mCRL2
+     \begin{itemize}
+       \item Team Automata -- avoiding getting stuck
+       \item \url{https://jose.proenca.org/publication/terbeek-dlogic-2023/}
+     \end{itemize}
+   \end{itemize}
+
+\end{frame}
 
 \end{document}
