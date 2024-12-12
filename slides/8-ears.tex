@@ -1103,23 +1103,115 @@ init Hammer(0);
      \item Hybrid Automata
      \begin{itemize}
        \item Lince tool
-       \item \url{https://jose.proenca.org/publication/fmas-lince-2024/}
+       \item \structure{\url{https://jose.proenca.org/publication/fmas-lince-2024/}}
      \end{itemize}
 
      \item Verifying families of timed automata
      \begin{itemize}
        \item Uppex tool
-       \item \url{https://jose.proenca.org/publication/proenca-verification-2022/}
-       \item \url{https://jose.proenca.org/publication/proenca-spreadsheet-2023/}
+       \item \structure{\url{https://jose.proenca.org/publication/proenca-verification-2022/}}
+       \item \structure{\url{https://jose.proenca.org/publication/proenca-spreadsheet-2023/}}
      \end{itemize}
 
      \item Checking communication protocols with mCRL2
      \begin{itemize}
        \item Team Automata -- avoiding getting stuck
-       \item \url{https://jose.proenca.org/publication/terbeek-dlogic-2023/}
+       \item \structure{\url{https://jose.proenca.org/publication/terbeek-dlogic-2023/}}
      \end{itemize}
    \end{itemize}
 
 \end{frame}
 
 \end{document}
+
+
+Lince exercises:
+
+Water tank:
+level := 5; drain := -1/2; level'=drain; drain'=0
+
+level'(t) = drain(t)
+drain'(t) = 0
+
+level(t) = drain(t)*t + level0
+drain(t) = 0t + drain0
+
+level(t) = drain0*t + level0
+drain(t) = drain0
+
+level(t) = -1/2*t + 5
+drain(t) = -1/2
+
+-- when to stop? -> drain going down, level > 3 -> level reaches 3!
+drain0*t+level0 = 3?
+t = (3-level0)/drain0 -- time to wait until "empty"
+-- when to stop? -> drain going up, level < 10 -> level reaches 10!
+drain0*t+level0 = 10
+t = (10-level0)/drain0 -- time to wait until "full"
+
+--------
+Cruise control:
+p :=0;  v :=0;  // follower  
+pl:=50; vl:=10; // leader
+...
+p'=v, v'= ACC, pl'=vl, vl'=0 for 1;
+
+-- should I accelerate or brake?
+p'(t)=v(t)
+v'(t)=ACC
+--
+v(t) = ACC*t+v0
+p(t) = (...)*v(t)*t+p0 = 1/2ACC*t^2+v0*t+p0
+--
+pl(t) = 1/2 ACCL*t^2 + vl0*t + pl0
+
+-- how to avoid crashes?
+-- assume worst brake (>-2)
+-- if I accelerate one ROUND, can I still brake in time?
+In one round I'm here:
+  new_p  = 1/2*ACC *t^2 + v *t + p   (new_v  = ...)
+  new_pl = 1/2*BRKL*t^2 + vl*t + pl  (new_vl = ...)
+Then I crash at time "t" when positions are the same
+  new2_p  = 1/2*BRK *t^2 + new_v *t + new_p
+  new2_pl = 1/2*BRKL*t^2 + new_vl*t + new_pl
+So: see if there is a time "t" such that
+  new2_p == new2_pl
+
+-----
+Simulate light: waiting with exponential rate 10
+
+light:=0; toWait:=0;
+while true do {
+  toWait:=expn(0.1);
+  light'=0 for toWait;
+  light:=1;
+  toWait:=expn(0.1);
+  if (toWait < 5)
+  then {
+    light'=0 for toWait;
+    light:=0;
+  }
+  else {
+    light'=0 for toWait;
+    light:=2;
+    toWait:=expn(0.1);
+    light'=0 for toWait;
+    light:=0;
+  }
+}
+---
+light:=0; toWait:=0;
+while true do {
+  wait expn(0.1);
+  light:=1;
+  toWait:=expn(0.1);
+  wait toWait;
+  if (toWait < 5)
+  then
+    light:=0;
+  else {
+    light:=2;
+    wait expn(0.1);
+    light:=0;
+  }
+}

@@ -58,8 +58,8 @@ Students should:
 - __28 Nov '24__: Probabilistic transition systems (slides [7-mchains.pdf](slides/7-mchains.pdf), frames 1-16)
 - __3 Dec '24__: Probabilities in Uppaal (slides [7-mchains.pdf](slides/7-mchains.pdf), frames 16-30)
 - __5 Dec '24__: EARS approach to requirement engineering [8-ears.pdf](slides/8-ears.pdf), frames 1-38)
-- __10 Dec '24__: tba
-- __12 Dec '24__: Revisions to the exam
+- __10 Dec '24__: EARS approach - revision and exercises [8-ears.pdf](slides/8-ears.pdf), frames 38-55); Lines of work on verification of interacting (real-time) systems
+- __12 Dec '24__: Hybrid programming in Lince [FMAS'24-slides](https://jose.proenca.org/publication/fmas-lince-2024/) - syntax and exercises
 
 <!--
 - __29 Sep 24__: XYZ ([2-xyz.pdf - pages 13-36](slides/2-xyz.pdf)).
