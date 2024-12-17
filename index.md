@@ -59,7 +59,8 @@ Students should:
 - __3 Dec '24__: Probabilities in Uppaal (slides [7-mchains.pdf](slides/7-mchains.pdf), frames 16-30)
 - __5 Dec '24__: EARS approach to requirement engineering [8-ears.pdf](slides/8-ears.pdf), frames 1-38)
 - __10 Dec '24__: EARS approach - revision and exercises [8-ears.pdf](slides/8-ears.pdf), frames 38-55); Lines of work on verification of interacting (real-time) systems
-- __12 Dec '24__: Hybrid programming in Lince [FMAS'24-slides](https://jose.proenca.org/publication/fmas-lince-2024/) - syntax and exercises
+- __12 Dec '24__: Hybrid programming in Lince [9-lince.pdf](slides/9-lince.pdf) - syntax and exercises
+- __17 Dec '24__: Semantics of hybrid programs in Lince; random simulations in Lince [9-lince.pdf](slides/9-lince.pdf)
 
 <!--
 - __29 Sep 24__: XYZ ([2-xyz.pdf - pages 13-36](slides/2-xyz.pdf)).
@@ -78,6 +79,7 @@ Students should:
 6. [Timed automata: verifying](slides/6-TA-verification.pdf)
 7. [Stochastic Timed automata](slides/7-mchains.pdf)
 8. [EARS approach](slides/8-ears.pdf)
+9. [Hybrid programs with Lince](slides/9-lince.pdf)
 
 ### Main book
 
